@@ -10,6 +10,18 @@
   --shadow-subtle: 0 2px 6px rgba(212, 119, 96, 0.08);
 }
 
+@keyframes blob-drift {
+  0% {
+    background-position: 0% 0%, 50% 100%, 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 50%, 50% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 50% 100%, 100% 50%;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,7 +32,14 @@ body {
   color: var(--text-dark);
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, var(--soft-cream) 0%, var(--white) 100%);
+  background: 
+    radial-gradient(ellipse 600px 600px at 20% 40%, rgba(244, 124, 124, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 500px at 80% 30%, rgba(255, 182, 182, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 700px at 50% 80%, rgba(217, 119, 96, 0.15) 0%, transparent 65%),
+    linear-gradient(135deg, #FFF8F3 0%, var(--soft-cream) 100%);
+  background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+  background-attachment: fixed;
+  animation: blob-drift 25s ease-in-out infinite;
   min-height: 100vh;
 }
 
@@ -28,9 +47,6 @@ body {
 header {
   background: linear-gradient(135deg, var(--primary-peach) 0%, #F5959A 100%);
   box-shadow: var(--shadow-soft);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   padding: 1.5rem 2rem;
 }
 
